@@ -38,6 +38,6 @@ for r in ranges:
 end_p1 = time.time()
 
 print("Part 1 result: {}".format(sum_1))
-print("Part 1 result: {}".format(sum_2))
+print("Part 2 result: {}".format(sum_2))
 print("The time of execution of above program is :", (end_p1 - start_p1) * 10**3, "ms")
 print()
