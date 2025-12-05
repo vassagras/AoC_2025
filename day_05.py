@@ -31,19 +31,19 @@ for ingredient in ingredients_ids:
 # Sort ranges by start value
 ranges = sorted(ranges, key=lambda x: x[0])
 
-merged = []
+merged_ranges = []
 current_start, current_end = ranges[0]
 for start, end in ranges[1:]:
     if start > current_end:
-        merged.append([current_start, current_end])
+        merged_ranges.append([current_start, current_end])
         current_start, current_end = start, end
     else:
         # In case of overlap, then extend the end
         current_end = max(current_end, end)
 
 # Add final range and count
-merged.append([current_start, current_end])
-count_2 = sum(end - start + 1 for start, end in merged)
+merged_ranges.append([current_start, current_end])
+count_2 = sum(end - start + 1 for start, end in merged_ranges)
 
 end_p1 = time.time()
 
