@@ -9,6 +9,7 @@ count_2 = 0
 ingredients_ids = set()
 ranges = []
 
+# Read input data
 flag = False
 for l in file.readlines():
     if l == "\n":
@@ -20,11 +21,29 @@ for l in file.readlines():
     else:
         ranges.append([int(e) for e in l.strip().split("-")])
 
+# for each ingredient check if it is contained within the existing ranges, if so stop further search
 for ingredient in ingredients_ids:
     for r in ranges:
         if r[0] <= ingredient <= r[1]:
             count_1 += 1
             break
+
+# Sort ranges by start value
+ranges = sorted(ranges, key=lambda x: x[0])
+
+merged = []
+current_start, current_end = ranges[0]
+for start, end in ranges[1:]:
+    if start > current_end:
+        merged.append([current_start, current_end])
+        current_start, current_end = start, end
+    else:
+        # In case of overlap, then extend the end
+        current_end = max(current_end, end)
+
+# Add final range and count
+merged.append([current_start, current_end])
+count_2 = sum(end - start + 1 for start, end in merged)
 
 end_p1 = time.time()
 
