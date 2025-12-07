@@ -1,6 +1,6 @@
 from collections import deque
 
-class ManifoldDay07:
+class Manifold:
 
     def __init__(self, diagram, beams):
         self.diagram = diagram
