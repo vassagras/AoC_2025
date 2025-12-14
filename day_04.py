@@ -37,6 +37,9 @@ for i in range(len(grid)):
         if is_weak_spot(grid, i, j):
             count_1 += 1
 
+print("Part 1 result: {}".format(count_1))
+
+
 count_2 = 0
 while True:
     weak_spots = [(i, j) for i in range(len(grid)) for j in range(len(grid[0]))
@@ -52,7 +55,6 @@ while True:
 
 end_p1 = time.time()
 
-print("Part 1 result: {}".format(count_1))
 print("Part 2 result: {}".format(count_2))
 print("The time of execution of above program is :", (end_p1 - start_p1) * 10**3, "ms")
 print()
